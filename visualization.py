@@ -1,0 +1,20 @@
+import pandas as pd 
+import matplotlib.pyplot as plt 
+file_path = "Task 1.xlsx"
+orders = pd.read_excel(file_path, sheet_name="Orders")
+category_sales = orders.groupby("Category")["Sales"].sum()
+plt.figure(figsize=(8, 6))
+category_sales.plot(kind="bar", color="green", edgecolor="black")
+plt.title("Total Sales by Category")
+plt.xlabel("Category")
+plt.ylabel("Sales")
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.show()  
+region_profit = orders.groupby("Region")["Profit"].sum()
+plt.figure(figsize=(6, 6)) 
+region_profit.plot(kind="pie", autopct="%1.1f%%",startangle=90)
+plt.title("Profit Distribution by Region")
+plt.ylabel("") 
+plt.tight_layout()
+plt.show()
